@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hana's Valentine Surprise</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg">
+      <span class="glow glow-left"></span>
+      <span class="glow glow-right"></span>
+      <span class="glow glow-top"></span>
+    </div>
+
+    <main class="wrap">
+      <section class="card" aria-live="polite">
+        <p class="eyebrow">HAPPY VALENTINES DAY YA HANOUN❤️</p>
+        <h1>Veux-tu être ma Valentine&nbsp;?</h1>
+                <div class="bubbles" role="group" aria-label="Réponses">
+          <button class="bubble bubble-yes" id="yesBtn" type="button">Oui</button>
+          <button class="bubble bubble-sure" id="noBtn" type="button">no</button>
+        </div>
+      </section>
+
+      <div class="hearts" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+      </div>
+    </main>
+
+
+    <section class="gallery" id="gallery" hidden>
+      <h1>Je T'aime</h1>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_7635.JPG" width = "100%" height="100%" alt="Photo 1"></div>
+          <div class="photo-note">December 21, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_5017.JPG" width = "100%" height="100%" alt="Photo 2"></div>
+          <div class="photo-note">December 25, 2024</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_5791.jpg" width = "100%" height="100%" alt="Photo 3"></div>
+          <div class="photo-note">June 2, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_5707.JPG" width = "100%" height="100%" alt="Photo 4"></div>
+          <div class="photo-note">May 23, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_6092.JPG" width = "100%" height="100%" alt="Photo 5"></div>
+          <div class="photo-note">June 29, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_6176.JPG" width = "100%" height="100%" alt="Photo 6"></div> 
+          <div class="photo-note">July 4, 2025</div>
+
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_6224.JPG" width = "100%" height="100%" alt="Photo 7"></div> 
+          <div class="photo-note">July 5, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box"><img src="IMG_6107.jpg" width = "100%" height="100%" alt="Photo 8"></div> 
+          <div class="photo-note">June 30, 2025</div>
+        </div>
+        <div class="gallery-item">
+          <div class="photo-box">
+            <video src="61D8DFD1-063A-461B-A0B2-D5EB608EFC5F.MOV" width = "93%" controls></video>
+          </div>
+          <div class="photo-note">May 16, 2025</div>
+        </div>
+        
+        <div class="final-note">Everything with you is simply the best. Rabena yekhaleeki leya❤️</div>
+
+      </div>
+ 
+        
+    </section>
+
+    <script>
+      const yesBtn = document.getElementById("yesBtn");
+      const noBtn = document.getElementById("noBtn");
+      const card = document.querySelector(".card");
+      const gallery = document.getElementById("gallery");
+
+      if (yesBtn && card && gallery) {
+        yesBtn.addEventListener("click", () => {
+          card.hidden = true;
+          gallery.hidden = false;
+          gallery.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+
+      if (noBtn) {
+        const jump = () => {
+          const rect = noBtn.getBoundingClientRect();
+          const padding = 16;
+          const maxX = window.innerWidth - rect.width - padding;
+          const maxY = window.innerHeight - rect.height - padding;
+          const randX = Math.max(padding, Math.min(maxX, Math.random() * maxX));
+          const randY = Math.max(padding, Math.min(maxY, Math.random() * maxY));
+          noBtn.style.left = `${randX}px`;
+          noBtn.style.top = `${randY}px`;
+        };
+
+        const dodge = () => {
+          jump();
+        };
+
+        noBtn.addEventListener("mouseenter", dodge);
+        noBtn.addEventListener("mousemove", dodge);
+        noBtn.addEventListener("click", (event) => {
+          event.preventDefault();
+          dodge();
+        });
+
+        window.addEventListener("resize", jump);
+      }
+    </script>
+
+  </body>
+</html>
